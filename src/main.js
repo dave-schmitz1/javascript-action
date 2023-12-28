@@ -15,6 +15,10 @@ async function run() {
       process.env.GITHUB_TOKEN || core.getInput('github_token')
     )
 
+    core.startGroup('Logging github context')
+    console.log(JSON.stringify(github.context, null, 2))
+    core.endGroup()
+
     try {
       const createCommentResponse = await octokit.rest.issues.createComment({
         owner: github.context.repo.owner,
