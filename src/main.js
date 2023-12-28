@@ -19,6 +19,10 @@ async function run() {
     console.log(JSON.stringify(github.context, null, 2))
     core.endGroup()
 
+    console.log(`Actor:  ${github.context.actor}`)
+    console.log(`Action: ${github.context.eventName}`)
+    console.log(`Workflow: ${github.context.workflow}`)
+
     try {
       const createCommentResponse = await octokit.rest.issues.createComment({
         owner: github.context.repo.owner,
