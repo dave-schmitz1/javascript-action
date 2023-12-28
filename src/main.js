@@ -7,9 +7,9 @@ const github = require('@actions/github')
  */
 async function run() {
   try {
-    const body = core.getInput('message_body', { required: true })
+    const name = core.getInput('name', { required: true })
 
-    console.log(`Input passed for pull request message body: ${body}`)
+    console.log(`Input passed for name: ${name}`)
 
     const octokit = github.getOctokit(
       process.env.GITHUB_TOKEN || core.getInput('github_token')
@@ -18,6 +18,31 @@ async function run() {
     core.startGroup('Logging github context')
     console.log(JSON.stringify(github.context, null, 2))
     core.endGroup()
+
+    const output = `## Terraform Plan For \`${name}\`
+    #### Terraform Format and Style 🖌 steps.fmt.outcome
+    #### Terraform Initialization ⚙️ steps.init.outcome
+    #### Terraform Validation 🤖 steps.validate.outcome
+    <details><summary>Validation Output</summary>
+
+    \`\`\`\n
+    Steps.validate.outputs.stdout
+    \`\`\`
+
+    </details>
+
+    #### Terraform Plan 📖 steps.plan.outcome
+
+    <details><summary>Show Plan for ${name}</summary>
+
+    \`\`\`\n
+    plan
+    \`\`\`
+
+    </details>
+    truncated_message
+
+    *Pusher: @${github.context.actor}, Action: \`${github.context.eventName}\`, Working Directory: \`${name}\`, Workflow: \`${github.context.workflow}\`*`
 
     console.log(`Actor:  ${github.context.actor}`)
     console.log(`Action: ${github.context.eventName}`)
@@ -28,7 +53,7 @@ async function run() {
         owner: github.context.repo.owner,
         repo: github.context.repo.repo,
         issue_number: github.context.issue.number,
-        body: `Thanks for contributing! ${body}`
+        body: `${output}`
       })
     } catch (error) {
       core.error('Error occurred while trying to add pull request comment')

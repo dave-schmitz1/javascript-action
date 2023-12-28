@@ -4,7 +4,7 @@ description: 'Adds a pull request comment'
 
 # Define your inputs here.
 inputs:
-  message_body:
+  name:
     description: 'Pull request comment message body'
     required: true
     default: 'World'
