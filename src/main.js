@@ -49,12 +49,37 @@ async function run() {
     console.log(`Workflow: ${github.context.workflow}`)
 
     try {
-      const createCommentResponse = await octokit.rest.issues.createComment({
+      // Find existing bot comment for the PR
+      const { data: comments } = await octokit.rest.issues.listComments({
         owner: github.context.repo.owner,
         repo: github.context.repo.repo,
-        issue_number: github.context.issue.number,
-        body: `${output}`
+        issue_number: github.context.issue.number
       })
+      const botComment = comments.find(comment => {
+        return (
+          comment.user.type === 'Bot' &&
+          comment.body.includes(`Terraform Plan For \`${name}\``)
+        )
+      })
+
+      console.log(`BotComment found: ${botComment}`)
+
+      // Update existing or create comment
+      if (botComment) {
+        const updateCommentResponse = await octokit.rest.issues.updateComment({
+          owner: github.context.repo.owner,
+          repo: github.context.repo.repo,
+          comment_id: botComment.id,
+          body: `${output}`
+        })
+      } else {
+        const createCommentResponse = await octokit.rest.issues.createComment({
+          owner: github.context.repo.owner,
+          repo: github.context.repo.repo,
+          issue_number: github.context.issue.number,
+          body: `${output}`
+        })
+      }
     } catch (error) {
       core.error('Error occurred while trying to add pull request comment')
       core.setFailed(error.message)
