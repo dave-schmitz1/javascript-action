@@ -1,5 +1,5 @@
 const core = require('@actions/core')
-const { wait } = require('./wait')
+const github = require('@actions/github')
 
 /**
  * The main function for the action.
@@ -7,20 +7,26 @@ const { wait } = require('./wait')
  */
 async function run() {
   try {
-    const ms = core.getInput('milliseconds', { required: true })
+    const body = core.getInput('message_body', { required: true })
 
-    // Debug logs are only output if the `ACTIONS_STEP_DEBUG` secret is true
-    core.debug(`Waiting ${ms} milliseconds ...`)
+    console.log(`Input passed for pull request message body: ${body}`)
 
-    // Log the current timestamp, wait, then log the new timestamp
-    core.debug(new Date().toTimeString())
-    await wait(parseInt(ms, 10))
-    core.debug(new Date().toTimeString())
+    const octokit = github.getOctokit(process.env.GITHUB_TOKEN)
 
-    // Set outputs for other workflow steps to use
-    core.setOutput('time', new Date().toTimeString())
+    try {
+      const createCommentResponse = await octokit.rest.issues.createComment({
+        owner: github.context.repo.owner,
+        repo: github.context.repo.repo,
+        issue_number: github.context.issue.number,
+        body: `Thanks for contributing! ${body}`
+      })
+    } catch (error) {
+      core.error('Error occurred while trying to add pull request comment')
+      core.setFailed(error.message)
+    }
   } catch (error) {
     // Fail the workflow run if an error occurs
+    core.error('Error occurred before trying to add pull request comment')
     core.setFailed(error.message)
   }
 }

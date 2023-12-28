@@ -1,18 +1,18 @@
-name: 'The name of your action here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'Pull Request Comment'
+author: 'Dave Schmitz'
+description: 'Adds a pull request comment'
 
 # Define your inputs here.
 inputs:
-  milliseconds:
-    description: 'Your input description here'
+  message_body:
+    description: 'Pull request comment message body'
     required: true
-    default: '1000'
+    default: 'World'
 
 # Define your outputs here.
-outputs:
-  time:
-    description: 'Your output description here'
+# outputs:
+#   time:
+#     description: 'Your output description here'
 
 runs:
   using: node20
