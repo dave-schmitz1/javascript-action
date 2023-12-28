@@ -28922,7 +28922,9 @@ async function run() {
 
     console.log(`Input passed for pull request message body: ${body}`)
 
-    const octokit = github.getOctokit(process.env.GITHUB_TOKEN)
+    const octokit = github.getOctokit(
+      process.env.GITHUB_TOKEN || core.getInput('github_token')
+    )
 
     try {
       const createCommentResponse = await octokit.rest.issues.createComment({

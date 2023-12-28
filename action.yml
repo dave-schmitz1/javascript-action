@@ -8,6 +8,9 @@ inputs:
     description: 'Pull request comment message body'
     required: true
     default: 'World'
+  github_token:
+    description: GitHub token
+    default: ${{ github.token }}
 
 # Define your outputs here.
 # outputs:
