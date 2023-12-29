@@ -28942,7 +28942,7 @@ async function run() {
 
     </details>`
 
-    output += `\n#### Terraform Plan 📖 \`steps.plan.outcome\``
+    output += `\n\n#### Terraform Plan 📖 \`steps.plan.outcome\``
 
     output += `\n<details><summary>Show Plan for ${name}</summary>
 
@@ -28953,7 +28953,7 @@ async function run() {
     </details>`
     output += `\ntruncated_message`
 
-    output += `\n*Pusher: @${github.context.actor}, Action: \`${github.context.eventName}\`, Working Directory: \`${name}\`, Workflow: \`${github.context.workflow}\`*`
+    output += `\n\n*Pusher: @${github.context.actor}, Action: \`${github.context.eventName}\`, Working Directory: \`${name}\`, Workflow: \`${github.context.workflow}\`*`
 
     console.log(`Actor:  ${github.context.actor}`)
     console.log(`Action: ${github.context.eventName}`)
