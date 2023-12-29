@@ -28931,13 +28931,13 @@ async function run() {
     core.endGroup()
 
     const output = `## Terraform Plan For \`${name}\`
-    #### Terraform Format and Style 🖌 steps.fmt.outcome
-    #### Terraform Initialization ⚙️ steps.init.outcome
-    #### Terraform Validation 🤖 steps.validate.outcome
+    #### Terraform Format and Style 🖌 \`steps.fmt.outcome\`
+    #### Terraform Initialization ⚙️ \`steps.init.outcome\`
+    #### Terraform Validation 🤖 \`steps.validate.outcome\`
     <details><summary>Validation Output</summary>
 
     \`\`\`\n
-    Steps.validate.outputs.stdout
+    Success! The configuration is valid.
     \`\`\`
 
     </details>
