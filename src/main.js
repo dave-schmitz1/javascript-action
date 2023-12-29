@@ -20,29 +20,29 @@ async function run() {
     core.endGroup()
 
     const output = `## Terraform Plan For \`${name}\`
-    #### Terraform Format and Style 🖌 \`steps.fmt.outcome\` ####
-    #### Terraform Initialization ⚙️ \`steps.init.outcome\` ####
-    #### Terraform Validation 🤖 \`steps.validate.outcome\` ####
-    <details><summary>Validation Output</summary>
+    "#### Terraform Format and Style 🖌 \`steps.fmt.outcome\`"
+    "#### Terraform Initialization ⚙️ \`steps.init.outcome\`"
+    "#### Terraform Validation 🤖 \`steps.validate.outcome\`"
+    "<details><summary>Validation Output</summary>
 
     \`\`\`\n
     Success! The configuration is valid.
     \`\`\`
 
-    </details>
+    </details>"
 
-    #### Terraform Plan 📖 \`steps.plan.outcome\` ####
+    "#### Terraform Plan 📖 \`steps.plan.outcome\`"
 
-    <details><summary>Show Plan for ${name}</summary>
+    "<details><summary>Show Plan for ${name}</summary>
 
     \`\`\`\n
     plan
     \`\`\`
 
-    </details>
+    </details>"
     truncated_message
 
-    *Pusher: @${github.context.actor}, Action: \`${github.context.eventName}\`, Working Directory: \`${name}\`, Workflow: \`${github.context.workflow}\`*`
+    "*Pusher: @${github.context.actor}, Action: \`${github.context.eventName}\`, Working Directory: \`${name}\`, Workflow: \`${github.context.workflow}\`*"`
 
     console.log(`Actor:  ${github.context.actor}`)
     console.log(`Action: ${github.context.eventName}`)
@@ -70,14 +70,14 @@ async function run() {
           owner: github.context.repo.owner,
           repo: github.context.repo.repo,
           comment_id: botComment.id,
-          body: `"${output}"`
+          body: `${output}`
         })
       } else {
         const createCommentResponse = await octokit.rest.issues.createComment({
           owner: github.context.repo.owner,
           repo: github.context.repo.repo,
           issue_number: github.context.issue.number,
-          body: `"${output}"`
+          body: `${output}`
         })
       }
     } catch (error) {
