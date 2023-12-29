@@ -19,8 +19,11 @@ async function run() {
     console.log(JSON.stringify(github.context, null, 2))
     core.endGroup()
 
-    const output = `## Terraform Plan For \`${name}\`\n#### Terraform Format and Style 🖌 \`steps.fmt.outcome\`\n#### Terraform Initialization ⚙️ \`steps.init.outcome\`\n#### Terraform Validation 🤖 \`steps.validate.outcome\`\n
-    <details><summary>Validation Output</summary>
+    let output = `## Terraform Plan For \`${name}\``
+    output += `\n#### Terraform Format and Style 🖌 \`steps.fmt.outcome\``
+    output += `\n#### Terraform Initialization ⚙️ \`steps.init.outcome\``
+    output += `\n#### Terraform Validation 🤖 \`steps.validate.outcome\``
+    output += `<details><summary>Validation Output</summary>
 
     \`\`\`\n
     Success! The configuration is valid.
