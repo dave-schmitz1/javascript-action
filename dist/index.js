@@ -28936,7 +28936,7 @@ async function run() {
     output += `\n#### Terraform Validation 🤖 \`steps.validate.outcome\``
     output += `\n<details><summary>Validation Output</summary> \
     \
-    \`\`\`\n \
+    \n\`\`\`\n \
     Success! The configuration is valid. \
     \`\`\` \
     \
@@ -28944,12 +28944,12 @@ async function run() {
 
     output += `\n\n#### Terraform Plan 📖 \`steps.plan.outcome\``
 
-    output += `\n<details><summary>Show Plan for ${name}</summary>
-
-    \`\`\`\n
-    plan
-    \`\`\`
-
+    output += `\n<details><summary>Show Plan for ${name}</summary> \
+    \
+    \n\`\`\`\n \
+    plan \
+    \`\`\` \
+    \
     </details>`
     output += `\ntruncated_message`
 
