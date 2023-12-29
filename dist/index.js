@@ -28981,14 +28981,14 @@ async function run() {
           owner: github.context.repo.owner,
           repo: github.context.repo.repo,
           comment_id: botComment.id,
-          body: `${output}`
+          body: `"${output}"`
         })
       } else {
         const createCommentResponse = await octokit.rest.issues.createComment({
           owner: github.context.repo.owner,
           repo: github.context.repo.repo,
           issue_number: github.context.issue.number,
-          body: `${output}`
+          body: `"${output}"`
         })
       }
     } catch (error) {
