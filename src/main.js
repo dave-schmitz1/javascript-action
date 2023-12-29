@@ -19,30 +19,30 @@ async function run() {
     console.log(JSON.stringify(github.context, null, 2))
     core.endGroup()
 
-    const output = `## Terraform Plan For \`${name}\`
-    "#### Terraform Format and Style 🖌 \`steps.fmt.outcome\`"
-    "#### Terraform Initialization ⚙️ \`steps.init.outcome\`"
-    "#### Terraform Validation 🤖 \`steps.validate.outcome\`"
-    "<details><summary>Validation Output</summary>
+    const output = `## Terraform Plan For \`${name}\` \r
+    #### Terraform Format and Style 🖌 \`steps.fmt.outcome\` \r
+    #### Terraform Initialization ⚙️ \`steps.init.outcome\` \r
+    #### Terraform Validation 🤖 \`steps.validate.outcome\` \r
+    <details><summary>Validation Output</summary>
 
     \`\`\`\n
     Success! The configuration is valid.
     \`\`\`
 
-    </details>"
+    </details>
 
-    "#### Terraform Plan 📖 \`steps.plan.outcome\`"
+    #### Terraform Plan 📖 \`steps.plan.outcome\`
 
-    "<details><summary>Show Plan for ${name}</summary>
+    <details><summary>Show Plan for ${name}</summary>
 
     \`\`\`\n
     plan
     \`\`\`
 
-    </details>"
-    truncated_message
+    </details>
+    truncated_message \r
 
-    "*Pusher: @${github.context.actor}, Action: \`${github.context.eventName}\`, Working Directory: \`${name}\`, Workflow: \`${github.context.workflow}\`*"`
+    *Pusher: @${github.context.actor}, Action: \`${github.context.eventName}\`, Working Directory: \`${name}\`, Workflow: \`${github.context.workflow}\`*`
 
     console.log(`Actor:  ${github.context.actor}`)
     console.log(`Action: ${github.context.eventName}`)
