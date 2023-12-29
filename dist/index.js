@@ -28937,7 +28937,7 @@ async function run() {
     output += `\n<details><summary>Validation Output</summary> \
     \
     \`\`\`\n \
-    Success! The configuration is valid. \
+    \nSuccess! The configuration is valid.\n \
     \`\`\` \
     \
     </details>`
