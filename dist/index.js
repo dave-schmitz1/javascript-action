@@ -28934,7 +28934,13 @@ async function run() {
     output += `\n#### Terraform Format and Style 🖌 \`steps.fmt.outcome\``
     output += `\n#### Terraform Initialization ⚙️ \`steps.init.outcome\``
     output += `\n#### Terraform Validation 🤖 \`steps.validate.outcome\``
-    output += `\n<details><summary>Validation Output</summary>\n\`\`\`\n\nSuccess! The configuration is valid.\n\`\`\`\n\n</details>`
+    output += `\n<details><summary>Validation Output</summary> \
+    \
+    \`\`\`\n \
+    Success! The configuration is valid. \
+    \`\`\` \
+    \
+    </details>`
 
     output += `\n\n#### Terraform Plan 📖 \`steps.plan.outcome\``
 
