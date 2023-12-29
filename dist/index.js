@@ -28930,10 +28930,7 @@ async function run() {
     console.log(JSON.stringify(github.context, null, 2))
     core.endGroup()
 
-    const output = `## Terraform Plan For \`${name}\` \r
-    #### Terraform Format and Style 🖌 \`steps.fmt.outcome\` \r
-    #### Terraform Initialization ⚙️ \`steps.init.outcome\` \r
-    #### Terraform Validation 🤖 \`steps.validate.outcome\` \r
+    const output = `## Terraform Plan For \`${name}\`\n#### Terraform Format and Style 🖌 \`steps.fmt.outcome\`\n#### Terraform Initialization ⚙️ \`steps.init.outcome\`\n#### Terraform Validation 🤖 \`steps.validate.outcome\`\n
     <details><summary>Validation Output</summary>
 
     \`\`\`\n
