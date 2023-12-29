@@ -23,26 +23,26 @@ async function run() {
     output += `\n#### Terraform Format and Style 🖌 \`steps.fmt.outcome\``
     output += `\n#### Terraform Initialization ⚙️ \`steps.init.outcome\``
     output += `\n#### Terraform Validation 🤖 \`steps.validate.outcome\``
-    output += `<details><summary>Validation Output</summary>
+    output += `\n<details><summary>Validation Output</summary>
 
     \`\`\`\n
     Success! The configuration is valid.
     \`\`\`
 
-    </details>
+    </details>`
 
-    #### Terraform Plan 📖 \`steps.plan.outcome\`
+    output += `\n#### Terraform Plan 📖 \`steps.plan.outcome\``
 
-    <details><summary>Show Plan for ${name}</summary>
+    output += `\n<details><summary>Show Plan for ${name}</summary>
 
     \`\`\`\n
     plan
     \`\`\`
 
-    </details>
-    truncated_message \r
+    </details>`
+    output += `\ntruncated_message`
 
-    *Pusher: @${github.context.actor}, Action: \`${github.context.eventName}\`, Working Directory: \`${name}\`, Workflow: \`${github.context.workflow}\`*`
+    output += `*Pusher: @${github.context.actor}, Action: \`${github.context.eventName}\`, Working Directory: \`${name}\`, Workflow: \`${github.context.workflow}\`*`
 
     console.log(`Actor:  ${github.context.actor}`)
     console.log(`Action: ${github.context.eventName}`)
