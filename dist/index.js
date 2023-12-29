@@ -28953,7 +28953,7 @@ async function run() {
     </details>`
     output += `\ntruncated_message`
 
-    output += `*Pusher: @${github.context.actor}, Action: \`${github.context.eventName}\`, Working Directory: \`${name}\`, Workflow: \`${github.context.workflow}\`*`
+    output += `\n*Pusher: @${github.context.actor}, Action: \`${github.context.eventName}\`, Working Directory: \`${name}\`, Workflow: \`${github.context.workflow}\`*`
 
     console.log(`Actor:  ${github.context.actor}`)
     console.log(`Action: ${github.context.eventName}`)
